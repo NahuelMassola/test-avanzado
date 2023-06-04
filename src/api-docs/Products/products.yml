@@ -1,0 +1,232 @@
+paths:
+  /api/products/:
+    get:
+      summary: Obtiene todos los productos de la base de datos
+      tags:
+        - Products
+      responses:
+        '200':
+          description: Se obtuvieron todos los productos
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#components/schemas/Product'
+        '500':
+          description: Error al obtener todos los productos de la base de datos
+    post:
+      summary: Agregar un Producto a la base de datos
+      tags:
+        - Products
+      parameters:
+        - name: pid
+          in: path
+          description: descripcion del producto
+          required: true
+          schema:
+            $type: string
+      responses:
+        '200':
+          description: Se Agrego Correctamente
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#components/schemas/ProductAdd'
+        '401':
+          description: Usuario NO Autorizado
+        '500': 
+          description:  Error al agregar un Producto
+
+  /api/products/{pid}:
+    get:
+      summary: Obtiene un producto por el id de la base de datos
+      tags:
+        - Products
+      parameters:
+        - name: pid
+          in: path
+          description: Id del producto
+          required: true
+          schema:
+            $type: string
+      responses:
+        '200':
+          descrition: Se obtuvo el Producto correctamente
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#components/schemas/ProductId'
+        '401':
+          descrition: Producto no encontrado
+    put:
+      summary: Actualiza el Producto de la Base de datos
+      tags:
+      - Products
+      parameters:
+        - name: pid
+          in: path
+          description: Id del producto
+          required: true
+          schema:
+            $type: string
+      responses:
+        '200':
+          description: Se Actualizo el Producto Correctamente
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#components/schemas/ProductUpdate'
+        '403':
+          description: El Id ingresado es incorrecto
+        '500':
+          description: Error al Actualizar Producto  
+
+components:
+  schemas:
+  # GET PRODUCTS
+    Product:
+      properties:
+        title:
+          type: string
+          description: Titulo del Producto 
+        description:
+          type: string
+          description: Descripcion del Producto
+        code:
+          type: string
+          description: Codigo del Producto
+        price: 
+          type: Number
+          description: Precio del Prodcuto
+        stock:
+          type: Number
+          description: Stock del Producto
+        Category:
+          typr: string
+          description: Categoria del Producto
+        thumbail: 
+          type: String
+          description: Imagen del Producto
+        owner:
+          type: string
+          description: Rol Por defecto Admin
+      example:
+        title: Remera Vans
+        description: Remera de algodon
+        code: 46465
+        price: 1000
+        stock: 5
+        Category: Remera Manga Corta
+        Thumbail: Enlace 1
+        owner: Admin
+  # PRODUCTO POR ID
+    ProductId:
+      properties:
+        _id:
+          type: ObjectId
+          description: Id Generado por mongo 
+        title:
+          type: string
+          description: Titulo del Producto 
+        description:
+          type: string
+          description: Descripcion del Producto
+        code:
+          type: string
+          description: Codigo del Producto
+        price: 
+          type: Number
+          description: Precio del Prodcuto
+        stock:
+          type: Number
+          description: Stock del Producto
+        Category:
+          typr: string
+          description: Categoria del Producto
+        thumbail: 
+          type: String
+          description: Imagen del Producto  
+        owner:
+          type: string
+          description: Rol Por defecto Admin
+      example:
+        id: 642cc73acc02f558eed80d3h
+        title: Remera Vans
+        description: Remera de algodon
+        code: 46465
+        price: 1000
+        stock: 5
+        Category: Remera Manga Corta
+        thumbail: Enlace 1
+        owner: Admin
+  # AGREGAR PRODUCTO
+    ProductAdd:
+      properties:
+        title:
+          type: string
+          description: Titulo del Producto 
+        description:
+          type: string
+          description: Descripcion del Producto
+        code:
+          type: string
+          description: Codigo del Producto
+        price: 
+          type: Number
+          description: Precio del Prodcuto
+        stock:
+          type: Number
+          description: Stock del Producto
+        Category:
+          typr: string
+          description: Categoria del Producto
+        thumbail: 
+          type: String
+          description: Imagen del Producto
+      example:
+        title: Remera Vans
+        description: Remera de algodon
+        code: 46465
+        price: 1000
+        stock: 5
+        Category: Remera Manga Corta
+        thumbail: Enlace 1
+  # ACTUALIZAR PRODUCTO
+    ProductUpdate:
+      properties:
+        title:
+          type: string
+          description: Titulo del Producto 
+        description:
+          type: string
+          description: Descripcion del Producto
+        code:
+          type: string
+          description: Codigo del Producto
+        price: 
+          type: Number
+          description: Precio del Prodcuto
+        stock:
+          type: Number
+          description: Stock del Producto
+        Category:
+          typr: string
+          description: Categoria del Producto
+        thumbail: 
+          type: String
+          description: Imagen del Producto
+      example:
+        title: Remera Vans
+        description: Remera de algodon
+        code: 46465
+        price: 1000
+        stock: 5
+        Category: Remera Manga Corta
+        thumbail: Enlace 1

@@ -1,0 +1,24 @@
+<main id="loginMain">
+  <section class=" text-center loginSection">
+    <div class="loginDiv">
+      <span class="logo"></span>
+      <h1 class="loginTitle">LOGIN</h1>
+      <form class=" p-5 loginForm" id="loginForm" >
+        <label>Correo electrónico</label>
+        <input name="email" />
+        <label>Contraseña</label>
+        <input type="password" name="password" />
+        <button >Login</button>
+      </form>
+          
+    </div>
+  </section>
+    <div class= "p-5 d-flex justify-content-center">
+        <a class="m-2" href="/forgotPassword" style=" color: #080808;"><button id="recuperar">Restablecer Contraseña</button></a>
+        <a href="/api/session/github" class="m-2"><button>Entra con Github</button></a>
+        <a class="text-center m-2" href="/register" style="margin: 10px; color: #080808;"><button>Registrate aqui</button></a>
+    </div>
+
+</main>
+<script src="/js/login.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
