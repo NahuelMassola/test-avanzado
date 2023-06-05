@@ -4,7 +4,7 @@ services:
   # nombre del servicio
   mongodb:
     image: mongo
-    container_name: mongo_db_container_swagger
+    container_name: mongo_db_container_test
     ports:
       # local --> contenedor
       - 27018:27017
@@ -13,7 +13,7 @@ services:
 
   api:
     build: .
-    container_name: api_containerr_swagger
+    container_name: api_containerr_test
     ports:
       # local --> contenedor
       - 6000:6000

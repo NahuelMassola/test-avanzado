@@ -12,18 +12,19 @@ const getProductsBd = async (req, res, next) => {
   try {
     const { limit, page, sort, ...query } = req.query;
     const products = await productServices.getProduct(page, limit, sort, query);
-    return HttpResp.OK(res , "Succes" , products)
+    if(!products) return HttpResp.BadRequest(res , "No existen Productos")
+    return HttpResp.OK(res , "Success" , products)
   } catch (error) {
-    return HttpResp.Error(res , "Error" , error)
+    return HttpResp.Error(res , "Error al obtener Productos" , error)
   }
 };
 
 
 const getProductIdBd = async (req, res) => {
   try {
-    
     const id = req.params.pid
     const getProductId = await productServices.getProductId(id);
+    if(!getProductId) return HttpResp.BadRequest(res , "Productos no Encontrado")
     return HttpResp.OK(res , "Prodcuto Encontrado" , getProductId)
   } catch (error) {
     return HttpResp.BadRequest(res , "Error" , error)
