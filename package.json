@@ -4,7 +4,9 @@
   "description": "Practica integradora",
   "main": "index.js",
   "scripts": {
-    "test:products": "mocha ./src/test/products/product.test",
+    "test:user": "mocha --timeout 5000 ./src/test/user/supertest.js",
+    "test:products": "mocha --timeout 5000 ./src/test/products/supertest.js",
+    "test:carts": "mocha --timeout 5000 ./src/test/carts/supertest.js",
     "start:dev": "cross-env ENVIROMENT=development nodemon ./src/app.js",
     "start:prod": "cross-env ENVIROMENT=production nodemon ./src/app.js"
   },

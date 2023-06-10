@@ -13,7 +13,7 @@ const getProductsBd = async (req, res, next) => {
     const { limit, page, sort, ...query } = req.query;
     const products = await productServices.getProduct(page, limit, sort, query);
     if(!products) return HttpResp.BadRequest(res , "No existen Productos")
-    return HttpResp.OK(res , "Success" , products)
+    return HttpResp.OK(res , "Success" ,  products)
   } catch (error) {
     return HttpResp.Error(res , "Error al obtener Productos" , error)
   }
