@@ -4,7 +4,7 @@
   "description": "Practica integradora",
   "main": "index.js",
   "scripts": {
-    "test": "mocha test/until/hashPassword.tet",
+    "test:products": "mocha ./src/test/products/product.test",
     "start:dev": "cross-env ENVIROMENT=development nodemon ./src/app.js",
     "start:prod": "cross-env ENVIROMENT=production nodemon ./src/app.js"
   },
