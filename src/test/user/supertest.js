@@ -79,7 +79,7 @@ describe('test e2e User', ()=>{
         
     });
     
-    it.only(`Testing current ${portUrl}/api/session/current` , async () => {
+    it(`Testing current ${portUrl}/api/session/current` , async () => {
         const response = await request.get(`/api/session/current`).set('Cookie',[`${cookie.name}=${cookie.value}`])
         const { statusCode, ok, _body, headers} = response
         expect(statusCode).to.deep.equal(401);

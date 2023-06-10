@@ -16,4 +16,3 @@ const btnLogout = document.getElementById('logout');
             }
         })
           })
- 
